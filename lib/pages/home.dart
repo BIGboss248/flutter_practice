@@ -10,6 +10,8 @@ class HomePage extends StatefulWidget {
 class HhomePageState extends State<HomePage> {
   int currentPage = 0;
 
+  bool isSwitch = false;
+  bool? isCheckbox = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,14 +46,86 @@ class HhomePageState extends State<HomePage> {
             }
           },
         ),
-        body: Column(
-          children: [
-            Container(
-              child: Center(
-                child: Image.asset('images/lake.jpg',),
+        body: SingleChildScrollView(
+          child: Column(
+            spacing: 16,
+            children: [
+              Container(
+                child: Center(
+                  child: Image.asset(
+                    'images/lake.jpg',
+                  ),
+                ),
               ),
-            )
-          ],
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: isSwitch
+                        ? Colors.white
+                        : Colors.black, // Change text color with switch widget
+                    backgroundColor: Colors.blue,
+                    shadowColor: Colors.red,
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                  ),
+                  onPressed: () {
+                    debugPrint("ElevatedButton pressed");
+                  },
+                  child: Text("Click me")),
+              OutlinedButton(
+                  onPressed: () {
+                    debugPrint("OutlinedButton pressed");
+                  },
+                  child: Text("Click me")),
+              TextButton(
+                  onPressed: () {
+                    debugPrint("TextButton pressed");
+                  },
+                  child: Text("Click me")),
+              GestureDetector(
+                onTap: () {
+                  debugPrint("Row pressed");
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Icon(
+                      Icons.local_fire_department_rounded,
+                      color: Colors.amber,
+                    ),
+                    Text("Row widget"),
+                    Icon(
+                      Icons.local_fire_department_rounded,
+                      color: Colors.amber,
+                    ),
+                  ],
+                ),
+              ),
+              Switch(
+                  value: isSwitch,
+                  onChanged: (bool newbool) {
+                    debugPrint("Switch value changed to $newbool");
+                    setState(() {
+                      isSwitch = newbool;
+                    });
+                  }),
+              Checkbox(
+                  value: isCheckbox,
+                  onChanged: (bool? newbool) {
+                    debugPrint("Checkbox value changed to $newbool");
+                    setState(() {
+                      isCheckbox = newbool;
+                    });
+                  }),
+              Visibility(
+                visible: isCheckbox ?? false,
+                child: Image.network(
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAgCP4ggjblYy6md3itu-vR8l380G0GiIR4w&s",
+                ),
+              ),
+            ],
+          ),
         ));
   }
 }
