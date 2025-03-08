@@ -13,45 +13,46 @@ class HhomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Home"),
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-      ),
-      endDrawer: Drawer(
-        width: 200,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: DrawerList(),
+        appBar: AppBar(
+          title: Text("Home"),
+          centerTitle: true,
+          backgroundColor: Colors.blue,
         ),
-      ),
-      bottomNavigationBar: NavigationBar(
-        // List navigation destination and their icons
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-          NavigationDestination(icon: Icon(Icons.settings), label: "Settings"),
-        ],
-        // Action to do when a destination is selected
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPage = index;
-          });
-          if (index == 0) {
-            Navigator.pushNamed(context, '/home');
-          } else if (index == 1) {
-            Navigator.pushNamed(context, '/settings');
-          }
-        },
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/settings');
+        endDrawer: Drawer(
+          width: 250,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: DrawerList(),
+          ),
+        ),
+        bottomNavigationBar: NavigationBar(
+          // List navigation destination and their icons
+          destinations: const [
+            NavigationDestination(icon: Icon(Icons.home), label: "Home"),
+            NavigationDestination(
+                icon: Icon(Icons.settings), label: "Settings"),
+          ],
+          // Action to do when a destination is selected
+          onDestinationSelected: (int index) {
+            setState(() {
+              currentPage = index;
+            });
+            if (index == 0) {
+              Navigator.pushNamed(context, '/home');
+            } else if (index == 1) {
+              Navigator.pushNamed(context, '/settings');
+            }
           },
-          child: Text("Go to Settings"),
         ),
-      ),
-    );
+        body: Column(
+          children: [
+            Container(
+              child: Center(
+                child: Image.asset('images/lake.jpg',),
+              ),
+            )
+          ],
+        ));
   }
 }
 
@@ -65,9 +66,9 @@ class DrawerList extends StatelessWidget {
     return ListView(
       children: [
         ListTile(
-          leading: Icon(Icons.home), // widget left of the title
-          trailing: Icon(Icons.arrow_forward), // widget right of the title
-          title: Text("Home"),
+          trailing: Icon(Icons.home), // widget left of the title
+          leading: Icon(Icons.arrow_back), // widget right of the title
+          title: Center(child: Text("Home")),
           enabled: true,
           onTap: () {
             // action when the item is tapped
@@ -76,9 +77,9 @@ class DrawerList extends StatelessWidget {
           },
         ),
         ListTile(
-          leading: Icon(Icons.settings),
-          trailing: Icon(Icons.arrow_forward),
-          title: Text("Settings"),
+          trailing: Icon(Icons.settings),
+          leading: Icon(Icons.arrow_back),
+          title: Center(child: Text("Settings")),
           enabled: true,
           onTap: () {
             Navigator.pop(context);
@@ -86,9 +87,9 @@ class DrawerList extends StatelessWidget {
           },
         ),
         ListTile(
-          leading: Icon(Icons.contact_mail),
-          trailing: Icon(Icons.arrow_forward),
-          title: Text("Contact"),
+          trailing: Icon(Icons.contact_mail),
+          leading: Icon(Icons.arrow_back),
+          title: Center(child: Text("Contact")),
           enabled: true,
           onTap: () {
             Navigator.pop(context);
