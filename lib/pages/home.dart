@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 
 class HhomePageState extends State<HomePage> {
   int currentPage = 0;
-
+  bool isHovering = false;
   bool isSwitch = false;
   bool? isCheckbox = false;
   @override
@@ -19,6 +19,28 @@ class HhomePageState extends State<HomePage> {
           title: Text("Home"),
           centerTitle: true,
           backgroundColor: Colors.blue,
+          leading: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/contact');
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text(
+                    "Contact",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
         endDrawer: Drawer(
           width: 250,
@@ -52,8 +74,52 @@ class HhomePageState extends State<HomePage> {
             children: [
               Container(
                 child: Center(
-                  child: Image.asset(
-                    'images/lake.jpg',
+                  child: Container(
+                    child: Center(
+                      child: MouseRegion(
+                        onEnter: (_) {
+                          setState(() {
+                            isHovering = true;
+                          });
+                        },
+                        onExit: (_) {
+                          setState(() {
+                            isHovering = false;
+                          });
+                        },
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Image.asset(
+                              'images/lake.jpg',
+                              width: 1920,
+                              height: 1080,
+                              fit: BoxFit.cover,
+                            ),
+                            if (isHovering)
+                              Positioned.fill(
+                                child: Container(
+                                  color: Colors.black.withAlpha(128),
+                                  child: Center(
+                                    child: AnimatedOpacity(
+                                      opacity: isHovering ? 1.0 : 0.0,
+                                      duration: Duration(milliseconds: 300),
+                                      child: Text(
+                                        "Hovered Text",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
