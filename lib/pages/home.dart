@@ -20,19 +20,35 @@ class HhomePageState extends State<HomePage> {
           centerTitle: true,
           backgroundColor: Colors.blue,
           leading: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Row(
+              spacing: 8,
               children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/home');
+                  },
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      fixedSize: Size.fromWidth(75)),
+                  child: Text(
+                    "Home",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
                 TextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/contact');
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      fixedSize: Size.fromWidth(75)),
                   child: Text(
                     "Contact",
                     style: TextStyle(color: Colors.black),
@@ -41,6 +57,7 @@ class HhomePageState extends State<HomePage> {
               ],
             ),
           ),
+          leadingWidth: MediaQuery.of(context).size.width * 0.3,
         ),
         endDrawer: Drawer(
           width: 250,
@@ -72,53 +89,53 @@ class HhomePageState extends State<HomePage> {
           child: Column(
             spacing: 16,
             children: [
-              Container(
+              Center(
                 child: Center(
-                  child: Container(
-                    child: Center(
-                      child: MouseRegion(
-                        onEnter: (_) {
-                          setState(() {
-                            isHovering = true;
-                          });
-                        },
-                        onExit: (_) {
-                          setState(() {
-                            isHovering = false;
-                          });
-                        },
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Image.asset(
-                              'images/lake.jpg',
-                              width: 1920,
-                              height: 1080,
-                              fit: BoxFit.cover,
-                            ),
-                            if (isHovering)
-                              Positioned.fill(
-                                child: Container(
-                                  color: Colors.black.withAlpha(128),
-                                  child: Center(
-                                    child: AnimatedOpacity(
-                                      opacity: isHovering ? 1.0 : 0.0,
-                                      duration: Duration(milliseconds: 300),
-                                      child: Text(
-                                        "Hovered Text",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                  child: MouseRegion(
+                    onEnter: (_) {
+                      setState(() {
+                        isHovering = true;
+                      });
+                    },
+                    onExit: (_) {
+                      setState(() {
+                        isHovering = false;
+                      });
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Image.asset(
+                          'images/lake.jpg',
+                          width: 1920,
+                          height: 1080,
+                          fit: BoxFit.cover,
+                        ),
+                        if (isHovering)
+                          Positioned.fill(
+                            child: Container(
+                              color: Colors.black.withAlpha(128),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(0, 500, 0, 0),
+                                child: Center(
+                                  child: AnimatedOpacity(
+                                    opacity: isHovering ? 1.0 : 0.0,
+                                    duration: Duration(milliseconds: 300),
+                                    child: Text(
+                                      "Pixelprofit corp",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ),
                                 ),
-                              )
-                          ],
-                        ),
-                      ),
+                              ),
+                            ),
+                          )
+                      ],
                     ),
                   ),
                 ),
