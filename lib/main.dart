@@ -2,6 +2,7 @@
 
 import 'package:first_app/pages/contact.dart';
 import 'package:first_app/pages/home.dart';
+import 'package:first_app/pages/login.dart';
 import 'package:first_app/pages/settings.dart';
 import 'package:flutter/material.dart';
 
@@ -12,13 +13,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
-      debugShowCheckedModeBanner: false,
+      home: HomePage(), // Default page when the app starts
+      title: "Flutter Demo", // Name shown in browser app
+      debugShowCheckedModeBanner: false, // Remove the debug banner
       routes: {
-        '/home': (context) => HomePage(),
-        '/settings': (context) => SettingsPage(),
-        '/contact': (context) => ContactPage(),
+        "/home": (context) => HomePage(),
+        "/settings": (context) => SettingsPage(),
+        "/contact": (context) => ContactPage(),
+        "/login": (context) => Login(),
       },
+      theme: ThemeData(
+        // Theme data of the app
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 33, 243, 103),
+          primary: Colors.blue,
+          secondary: Colors.blueAccent,
+          brightness: Brightness.dark,
+        ),
+      ),
+      locale: const Locale("en", "US"),
     );
   }
 }

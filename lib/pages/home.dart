@@ -15,201 +15,200 @@ class HhomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Home"),
-          centerTitle: true,
-          backgroundColor: Colors.blue,
-          leading: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              spacing: 8,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/home');
-                  },
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      fixedSize: Size.fromWidth(75)),
-                  child: Text(
-                    "Home",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/contact');
-                  },
-                  style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      fixedSize: Size.fromWidth(75)),
-                  child: Text(
-                    "Contact",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          leadingWidth: MediaQuery.of(context).size.width * 0.3,
-        ),
-        endDrawer: Drawer(
-          width: 250,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: DrawerList(),
-          ),
-        ),
-        bottomNavigationBar: NavigationBar(
-          // List navigation destination and their icons
-          destinations: const [
-            NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-            NavigationDestination(
-                icon: Icon(Icons.settings), label: "Settings"),
-          ],
-          // Action to do when a destination is selected
-          onDestinationSelected: (int index) {
-            setState(() {
-              currentPage = index;
-            });
-            if (index == 0) {
-              Navigator.pushNamed(context, '/home');
-            } else if (index == 1) {
-              Navigator.pushNamed(context, '/settings');
-            }
-          },
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            spacing: 16,
+      appBar: AppBar(
+        title: Text("Home"),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+        leading: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            spacing: 8,
             children: [
-              Center(
-                child: Center(
-                  child: MouseRegion(
-                    onEnter: (_) {
-                      setState(() {
-                        isHovering = true;
-                      });
-                    },
-                    onExit: (_) {
-                      setState(() {
-                        isHovering = false;
-                      });
-                    },
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Image.asset(
-                          'images/lake.jpg',
-                          width: 1920,
-                          height: 1080,
-                          fit: BoxFit.cover,
-                        ),
-                        if (isHovering)
-                          Positioned.fill(
-                            child: Container(
-                              color: Colors.black.withAlpha(128),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(0, 500, 0, 0),
-                                child: Center(
-                                  child: AnimatedOpacity(
-                                    opacity: isHovering ? 1.0 : 0.0,
-                                    duration: Duration(milliseconds: 300),
-                                    child: Text(
-                                      "Pixelprofit corp",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/home');
+                },
+                style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    fixedSize: Size.fromWidth(75)),
+                child: Text(
+                  "Home",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/contact');
+                },
+                style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    fixedSize: Size.fromWidth(75)),
+                child: Text(
+                  "Contact",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ],
+          ),
+        ),
+        leadingWidth: MediaQuery.of(context).size.width * 0.3,
+      ),
+      endDrawer: Drawer(
+        width: 250,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: DrawerList(),
+        ),
+      ),
+      bottomNavigationBar: NavigationBar(
+        // List navigation destination and their icons
+        destinations: const [
+          NavigationDestination(icon: Icon(Icons.home), label: "Home"),
+          NavigationDestination(icon: Icon(Icons.settings), label: "Settings"),
+        ],
+        // Action to do when a destination is selected
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPage = index;
+          });
+          if (index == 0) {
+            Navigator.pushNamed(context, '/home');
+          } else if (index == 1) {
+            Navigator.pushNamed(context, '/settings');
+          }
+        },
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          spacing: 16,
+          children: [
+            Center(
+              child: Center(
+                child: MouseRegion(
+                  onEnter: (_) {
+                    setState(() {
+                      isHovering = true;
+                    });
+                  },
+                  onExit: (_) {
+                    setState(() {
+                      isHovering = false;
+                    });
+                  },
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'images/lake.jpg',
+                        width: 1920,
+                        height: 1080,
+                        fit: BoxFit.cover,
+                      ),
+                      if (isHovering)
+                        Positioned.fill(
+                          child: Container(
+                            color: Colors.black.withAlpha(128),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 500, 0, 0),
+                              child: Center(
+                                child: AnimatedOpacity(
+                                  opacity: isHovering ? 1.0 : 0.0,
+                                  duration: Duration(milliseconds: 300),
+                                  child: Text(
+                                    "Pixelprofit corp",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          )
-                      ],
-                    ),
+                          ),
+                        )
+                    ],
                   ),
                 ),
               ),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: isSwitch
-                        ? Colors.white
-                        : Colors.black, // Change text color with switch widget
-                    backgroundColor: Colors.blue,
-                    shadowColor: Colors.red,
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32),
-                    ),
+            ),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: isSwitch
+                      ? Colors.white
+                      : Colors.black, // Change text color with switch widget
+                  backgroundColor: Colors.blue,
+                  shadowColor: Colors.red,
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32),
                   ),
-                  onPressed: () {
-                    debugPrint("ElevatedButton pressed");
-                  },
-                  child: Text("Click me")),
-              OutlinedButton(
-                  onPressed: () {
-                    debugPrint("OutlinedButton pressed");
-                  },
-                  child: Text("Click me")),
-              TextButton(
-                  onPressed: () {
-                    debugPrint("TextButton pressed");
-                  },
-                  child: Text("Click me")),
-              GestureDetector(
-                onTap: () {
-                  debugPrint("Row pressed");
+                ),
+                onPressed: () {
+                  debugPrint("ElevatedButton pressed");
                 },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Icon(
-                      Icons.local_fire_department_rounded,
-                      color: Colors.amber,
-                    ),
-                    Text("Row widget"),
-                    Icon(
-                      Icons.local_fire_department_rounded,
-                      color: Colors.amber,
-                    ),
-                  ],
-                ),
+                child: Text("Click me")),
+            OutlinedButton(
+                onPressed: () {
+                  debugPrint("OutlinedButton pressed");
+                },
+                child: Text("Click me")),
+            TextButton(
+                onPressed: () {
+                  debugPrint("TextButton pressed");
+                },
+                child: Text("Click me")),
+            GestureDetector(
+              onTap: () {
+                debugPrint("Row pressed");
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(
+                    Icons.local_fire_department_rounded,
+                    color: Colors.amber,
+                  ),
+                  Text("Row widget"),
+                  Icon(
+                    Icons.local_fire_department_rounded,
+                    color: Colors.amber,
+                  ),
+                ],
               ),
-              Switch(
-                  value: isSwitch,
-                  onChanged: (bool newbool) {
-                    debugPrint("Switch value changed to $newbool");
-                    setState(() {
-                      isSwitch = newbool;
-                    });
-                  }),
-              Checkbox(
-                  value: isCheckbox,
-                  onChanged: (bool? newbool) {
-                    debugPrint("Checkbox value changed to $newbool");
-                    setState(() {
-                      isCheckbox = newbool;
-                    });
-                  }),
-              Visibility(
-                visible: isCheckbox ?? false,
-                child: Image.network(
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAgCP4ggjblYy6md3itu-vR8l380G0GiIR4w&s",
-                ),
+            ),
+            Switch(
+                value: isSwitch,
+                onChanged: (bool newbool) {
+                  debugPrint("Switch value changed to $newbool");
+                  setState(() {
+                    isSwitch = newbool;
+                  });
+                }),
+            Checkbox(
+                value: isCheckbox,
+                onChanged: (bool? newbool) {
+                  debugPrint("Checkbox value changed to $newbool");
+                  setState(() {
+                    isCheckbox = newbool;
+                  });
+                }),
+            Visibility(
+              visible: isCheckbox ?? false,
+              child: Image.network(
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAgCP4ggjblYy6md3itu-vR8l380G0GiIR4w&s",
               ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -251,6 +250,14 @@ class DrawerList extends StatelessWidget {
           onTap: () {
             Navigator.pop(context);
             Navigator.pushNamed(context, '/contact');
+          },
+        ),
+        ListTile(
+          title: Center(child: Text("Login")),
+          enabled: true,
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, '/login');
           },
         )
       ],
