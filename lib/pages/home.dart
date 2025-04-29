@@ -266,7 +266,15 @@ class DrawerList extends StatelessWidget {
             Navigator.pop(context);
             Navigator.pushNamed(context, '/login');
           },
-        )
+        ),
+        ListTile(
+          title: Center(child: Text("Welcome")),
+          enabled: true,
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, '/welcome');
+          },
+        ),
       ],
     );
   }

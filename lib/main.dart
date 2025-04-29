@@ -4,6 +4,7 @@ import 'package:first_app/pages/contact.dart';
 import 'package:first_app/pages/home.dart';
 import 'package:first_app/pages/login.dart';
 import 'package:first_app/pages/settings.dart';
+import 'package:first_app/pages/welcome.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         "/settings": (context) => SettingsPage(),
         "/contact": (context) => ContactPage(),
         "/login": (context) => Login(),
+        "/welcome": (context) => WelcomePage(),
       },
       theme: ThemeData(
         // Theme data of the app
